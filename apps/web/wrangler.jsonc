@@ -20,6 +20,19 @@
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
 	},
+	// App Store Server Notifications V2 的后台账本（订阅 / 财务）。
+	// 部署前先在「目标账号」执行 `wrangler d1 create orange-cloud-iap`，
+	// 把返回的 database_id 填到下面，再 `wrangler d1 migrations apply orange-cloud-iap --remote`。
+	// 本地开发 / 测试用 `--local`，placeholder id 即可，不联网。
+	"d1_databases": [
+		{
+			"binding": "IAP_DB",
+			"database_name": "orange-cloud-iap",
+			"database_id": "01f4f8e8-ed4d-456a-91d4-9c4507c96d3a",
+			"migrations_dir": "migrations",
+			"remote": true
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name
