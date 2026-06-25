@@ -1,7 +1,7 @@
 // CODEGEN —— 由 ios.json 生成 iOS 的「新功能」内容。运行：`pnpm changelog:gen`（或 gen:ios）。
 // 产出两个 codegen 独占文件（folder-sync 自动纳入 target，无需改 pbxproj）：
 //   Core/WhatsNew/WhatsNewReleases.generated.swift  —— releases 数组（仅 inApp 版本）
-//   Core/WhatsNew/WhatsNew.xcstrings                —— 9 语字符串目录（table = "WhatsNew"）
+//   Core/WhatsNew/WhatsNew.xcstrings                —— 13 语字符串目录（table = "WhatsNew"）
 // 手维护的 WhatsNew.swift 只引用 WhatsNewGenerated.releases；Localizable.xcstrings 完全不动。
 
 import { readFileSync } from "node:fs";
@@ -13,7 +13,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, "..", "..", "..");
 const IOS = join(repo, "apps/ios/Orange Cloud/Orange Cloud/Core/WhatsNew");
 
-const LOCALES = ["zh-Hans", "en", "zh-Hant", "zh-HK", "ja", "es-MX", "ko", "pt-BR", "pt-PT"];
+const LOCALES = ["zh-Hans", "en", "zh-Hant", "zh-HK", "ja", "es-MX", "ko", "pt-BR", "pt-PT", "de", "fr", "ar", "tr"];
 const releases = JSON.parse(readFileSync(join(here, "..", "ios.json"), "utf8"));
 const isNewer = (a, b) => a.localeCompare(b, undefined, { numeric: true }) > 0;
 
